@@ -26,3 +26,5 @@ services:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
     volumes:
       - ./.stack-data/db:/data
+      cpus: 0.5
+      mem_limit: 768m
