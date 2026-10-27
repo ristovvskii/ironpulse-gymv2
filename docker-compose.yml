@@ -1,8 +1,7 @@
 services:
   web:
     build:
-      context: .
-      dockerfile: Dockerfile
+      image: ghcr.io/ristovvskii/ironpulse:v1
     environment:
       NODE_ENV: production
       # API port inside the container (web always runs on 3000, see apps/web/package.json).
