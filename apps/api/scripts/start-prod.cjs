@@ -31,9 +31,11 @@ if (seed.status !== 0) {
   console.error('[start] demo seed failed; continuing to start the API.');
 }
 
+// API_PORT is the API's own port, so a container-wide PORT (read by `next start`) cannot collide.
 const api = spawn(process.execPath, [findDistFile('main.js')], {
   cwd: apiDirectory,
   stdio: 'inherit',
+  env: { ...process.env, PORT: process.env.API_PORT ?? '4000' },
 });
 for (const signal of ['SIGINT', 'SIGTERM']) {
   process.on(signal, () => api.kill(signal));

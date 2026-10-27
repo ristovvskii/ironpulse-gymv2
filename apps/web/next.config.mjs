@@ -9,6 +9,10 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  // Inlined at build time so middleware always has an absolute API URL, even if unset at runtime.
+  env: {
+    API_INTERNAL_URL: apiInternalUrl,
+  },
   // Same-origin API proxy: lets NEXT_PUBLIC_API_URL be "/api" when only the web port is exposed.
   async rewrites() {
     return {
