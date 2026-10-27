@@ -9,6 +9,9 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  // The Docker build sets SKIP_BUILD_CHECKS=1 to save time and memory; lint/typecheck still run locally and in CI.
+  eslint: { ignoreDuringBuilds: process.env.SKIP_BUILD_CHECKS === '1' },
+  typescript: { ignoreBuildErrors: process.env.SKIP_BUILD_CHECKS === '1' },
   // Inlined at build time so middleware always has an absolute API URL, even if unset at runtime.
   env: {
     API_INTERNAL_URL: apiInternalUrl,

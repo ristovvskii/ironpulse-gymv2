@@ -26,5 +26,6 @@ services:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
     volumes:
       - ./.stack-data/db:/data
+    # Required by RepoRun validation; must stay within the workspace quota (CPU 500m, memory 1000MB).
     cpus: 0.5
-    mem_limit: 768m
+    mem_limit: 900m
